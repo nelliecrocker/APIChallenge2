@@ -1,0 +1,24 @@
+body {
+    display: ;
+
+}
+
+#search-bar {
+    max-width: 80%;
+    height: 50px;
+
+}
+
+#carousel-size {
+    /* max-height: 500px; */
+    width: auto;
+}
+
+.giphyLetter {
+    height: 250px;
+    width: 500px;
+    margin: 25px;
+    border: none;
+    border-radius: 15px;
+
+}

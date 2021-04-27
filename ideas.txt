@@ -1,0 +1,10 @@
+giphy lib - create a mad lib type of storyline using search input fields
+
+spell your name with gifs - type your name into a search bar and the first giph that comes up with the letter shows on the screen
+
+filter by #typography
+
+type a name into a search bar
+convert the search into an array of letters
+conduct a giphy match for each individual letter
+display the result for each letter in the DOM (appendChild)
