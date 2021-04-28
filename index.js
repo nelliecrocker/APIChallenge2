@@ -15,22 +15,18 @@ document.getElementById('name-input').addEventListener('keypress', function (eve
         let nameArray = name.split("")
         console.log(nameArray)
         event.preventDefault()
+        //conduct search for each index in the array
+        for(letter of nameArray){
+            fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=alphabet letter" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
+            .then(res => res.json())
+            .then(json => {
+                let giphyImage = json.data.embed_url
+            })
+        }
     }
 })
 
-nameArray.map(){
-    fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
-}
-//grab giphy images
-fetch(baseURL)
-    .then(res => res.json())
-    .then(json => {
-        let giphyImage = json.data.embed_url
-        console.log(giphyImage);
-    })
-//&q parameter to search
 
-//conduct search for each index in the array
 
 //assign each index to a card
 
