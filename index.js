@@ -5,28 +5,34 @@
 
 let baseURL = "http://api.giphy.com/v1/gifs/random?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC"
 
-fetch(baseURL)
-    .then(res => res.json())
-    .then(json => {
-        console.log(json);
-
-        let giphyImage = json.data.embed_url
-})
 
 //initiate search when enter is pressed
-document.getElementById('search-bar').addEventListener("keypress", function(event) {
-    if (event.key === 'Enter'){
-        //function to map through name
-        let name = searchResults
-        // let nameArr = searchResults.split('')
-        name[0]
-        console.log(name);
-        // for (nameArr i = 0; i < nameArr.length; i++)
-        //function to display cards
+document.getElementById('name-input').addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        let name = document.getElementById("name-input").value
+        console.log(name); 
+        //map through the name input and set each letter as a string
+        let nameArray = name.split("")
+        console.log(nameArray)
+        event.preventDefault()
     }
 })
 
-//function to map through the name and set each letter as a string
+nameArray.map(){
+    fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
+}
+//grab giphy images
+fetch(baseURL)
+    .then(res => res.json())
+    .then(json => {
+        let giphyImage = json.data.embed_url
+        console.log(giphyImage);
+    })
+//&q parameter to search
+
+//conduct search for each index in the array
+
+//assign each index to a card
 
 //function to display each new card
 displayGiphy = (giphy) => {
