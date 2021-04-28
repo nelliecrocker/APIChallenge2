@@ -14,11 +14,11 @@ body {
     width: auto;
 }
 
-.giphyLetter {
+#giphy-letter {
     height: 250px;
     width: 500px;
     margin: 25px;
-    border: none;
+    border: 5px black solid;
     border-radius: 15px;
 
 }
