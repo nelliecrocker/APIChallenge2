@@ -19,28 +19,28 @@ document.getElementById('name-input').addEventListener('keypress', function (eve
 
         //conduct image search for each index in the array
         for (letter of nameArray) {
-            fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=alphabet letter" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
+            fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=alphabet%20letter%20" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
                 .then(res => res.json())
                 .then(json => {
                     let giphyImage = json.data[0].embed_url
                     console.log(giphyImage);
-                    // displayGiphy()
+                    displayGiphy(giphyImage)
                 })
         }
     }
 })
+//function to display each new card
+const displayGiphy = (giphyImage) => {
+    const wrapper = document.getElementById('giphy-letter')
+    let card = document.createElement("div")
+    card.className = "card"
+    let card_giphy = document.createElement("iframe")
+    card_giphy.className = "card-img-top"
+    card_giphy.src = `${giphyImage}` //link is inserted, but image isn't showing...
+    card.appendChild(card_giphy)
+    wrapper.appendChild(card)
+}
 
 //assign each index to a card
 
-//function to display each new card
-// const displayGiphy = (giphy) => {
-//     const wrapper = document.getElementById('giphy-letter')
-//     let card = document.createElement("div")
-//     card.className = "card"
-//     let card_giphy = document.createElement("video")
-//     card_giphy.className = "card-img-top"
-//     card_giphy.src = URL(giphy.giphyImage) //embed_url    //giphyImage
-//     card.appendChild(card_giphy)
-//     wrapper.appendChild(card)
-// }
 
