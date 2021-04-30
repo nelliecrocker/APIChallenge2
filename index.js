@@ -28,7 +28,7 @@ document.getElementById('name-input').addEventListener('keypress', function (eve
                 .then(res => res.json())
                 .then(json => {
                     let giphyImage = json.data[0].embed_url
-                    //how to add an if sttement that prevents duplicates
+                    //how to add an if statement that prevents duplicates
                    
                     displayGiphy(giphyImage)
 
