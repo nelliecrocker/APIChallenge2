@@ -20,19 +20,21 @@ document.getElementById('name-input').addEventListener('keypress', function (eve
         event.preventDefault() // stops page reload
 
         //conduct image search for each index in the array
-        for (letter of nameArray) {
-            fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=alphabet%20letter%20" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
+        getName()
+        //set it up so they display in order
+        async function getName() {
+            for (letter of nameArray) {
+            await fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=alphabet%20letter%20" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
                 .then(res => res.json())
                 .then(json => {
                     let giphyImage = json.data[0].embed_url
                     //how to add an if sttement that prevents duplicates
-                    //set it up so they display in order
-                    console.log(giphyImage);
-                    
+                   
                     displayGiphy(giphyImage)
 
                 })
         }
+    }
     }
 })
 
