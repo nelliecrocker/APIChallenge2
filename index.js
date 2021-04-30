@@ -8,6 +8,8 @@ let baseURL = "http://api.giphy.com/v1/gifs/random?api_key=iPMwiJS956zJ5N4dsf3vQ
 
 //initiate search when enter is pressed
 document.getElementById('name-input').addEventListener('keypress', function (event) {
+    //document.getElementById('name-input').reset()
+
     if (event.key === 'Enter') {
         let name = document.getElementById("name-input").value
         console.log(name);
@@ -23,19 +25,26 @@ document.getElementById('name-input').addEventListener('keypress', function (eve
                 .then(res => res.json())
                 .then(json => {
                     let giphyImage = json.data[0].embed_url
+                    //how to add an if sttement that prevents duplicates
+                    //set it up so they display in order
                     console.log(giphyImage);
+                    
                     displayGiphy(giphyImage)
+
                 })
         }
     }
 })
+
+//need to set it to reset the page on each submit
+
 //function to display each new card
 const displayGiphy = (giphyImage) => {
     const wrapper = document.getElementById('giphy-letter')
     let card = document.createElement("div")
     card.className = "card"
     let card_giphy = document.createElement("iframe")
-    card_giphy.className = "card-img-top"
+    card_giphy.className = "card-background"
     card_giphy.src = `${giphyImage}` //link is inserted, but image isn't showing...
     card.appendChild(card_giphy)
     wrapper.appendChild(card)
