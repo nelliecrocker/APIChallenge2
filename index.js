@@ -21,15 +21,17 @@ document.getElementById('name-input').addEventListener('keypress', function (eve
 
         //conduct image search for each index in the array
         getName()
-        //set it up so they display in order
         async function getName() {
+            let wrapper = document.getElementById('giphy-letter')
+            while (wrapper.firstChild) {
+                wrapper.removeChild(wrapper.firstChild)
+            }
             for (letter of nameArray) {
+                //set it up so they display in order
             await fetch("https://api.giphy.com/v1/gifs/search?api_key=iPMwiJS956zJ5N4dsf3vQwcl2gnNQASC&q=alphabet%20letter%20" + `${letter}` + "&limit=25&offset=0&rating=g&lang=en")
                 .then(res => res.json())
                 .then(json => {
-                    let giphyImage = json.data[0].embed_url
-                    //how to add an if statement that prevents duplicates
-                   
+                    let giphyImage = json.data[0].embed_url    
                     displayGiphy(giphyImage)
 
                 })
@@ -42,12 +44,12 @@ document.getElementById('name-input').addEventListener('keypress', function (eve
 
 //function to display each new card
 const displayGiphy = (giphyImage) => {
-    const wrapper = document.getElementById('giphy-letter')
+    let wrapper = document.getElementById('giphy-letter')
     let card = document.createElement("div")
     card.className = "card"
     let card_giphy = document.createElement("iframe")
     card_giphy.className = "card-background"
-    card_giphy.src = `${giphyImage}` //link is inserted, but image isn't showing...
+    card_giphy.src = `${giphyImage}`
     card.appendChild(card_giphy)
     wrapper.appendChild(card)
 }
